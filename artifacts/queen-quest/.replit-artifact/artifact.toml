@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Queen Quest"
+description = "A level-based N-Queens puzzle game where players learn safe queen placement, see conflicts and backtracking decisions, track solver statistics, and challenge a friend."
+version = "1.0.0"
+id = "artifacts/queen-quest"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20978
+
+[services.development]
+run = "pnpm --filter @workspace/queen-quest run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/queen-quest", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/queen-quest/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20978"
+BASE_PATH = "/"

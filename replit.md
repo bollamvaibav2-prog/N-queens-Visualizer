@@ -1,15 +1,14 @@
-# [Project name]
+# Queen Quest
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+An interactive N-Queens learning game with level progression, conflict feedback, a visible backtracking solver, and local friend play.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/queen-quest run dev` — run the web app
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
 - `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
 
 ## Stack
 
@@ -22,23 +21,28 @@ _Replace the heading above with the project's name, and this line with one sente
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/queen-quest/src/App.tsx` — game, level progression, friend mode, and backtracking solver
+- `artifacts/queen-quest/src/index.css` — app styling and responsive layout
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- The first version is client-side only; browser local storage keeps level progress and personal solve stats.
+- Friend play is pass-and-play on one device. Shared challenge links carry the level and board size; they do not sync live game state or scores across devices.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Six unlockable N-Queens levels from 4×4 through 8×8.
+- Interactive queen placement with immediate conflict marking, undo, reset, and completion feedback.
+- Animated backtracking walkthrough with decisions, solution counts, attempts, backtracks, visited placements, and elapsed time.
+- Two-player hot-seat mode and shareable friend challenge links.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+-
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+-
 
 ## Pointers
 
